@@ -1,0 +1,15 @@
+{
+  "name":"Matchupguru.com",
+  "short_name":"Matchupguru",
+  "display":"standalone",
+  "lang": "en-US",
+  "start_url": "/login",
+  "theme_color": "aliceblue",
+  "icons": [{
+    "src": "images/icon.png",
+    "sizes": "87*73"
+  }],
+  "background_color":"#464160",
+  "theme_color": "#2196F3"
+
+}

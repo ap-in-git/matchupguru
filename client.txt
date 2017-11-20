@@ -1,0 +1,118 @@
+
+Home Page
+*// List games across header - Hearthstone / Magic / Gwent - with links to landing page for each when not signed in and to stats page for each when signed in
+* Include Login, Account, and Contact buttons in header
+* Main page graphic showing cards and sample charts
+* Image carousel with links to articles, coded to be easily hidden/removed
+* Some sort of "older articles" display/link (also coded to be hidden)
+* Login button in middle of page
+* Login dialog pops up on screen
+
+//Contact Page
+* Line of text giving email address
+* Form with fields for Name, Email, Subject, and Question/Comment
+
+//Registration Form
+* Email (required)
+* User name for each game
+* Password (required)
+* Submission should capture creation date
+
+Account/User Page
+//* List each game with user name for that game as a link
+//* Games without User name should have button to add user name and another link to "Discover <Game>" with a link to that game
+//* Quick stats listed below each game
+* Clicking user Name should pop up stats dialog
+
+Game Specific Pages
+* When not logged in, show sample charts with sign up/sign in button
+* When logged in show chart/stats GUI to navigate all stats for that game
+* Additional space below for text like deck synopses
+
+SQL Tables
+* User/account info
+* Game logs
+* List of possible decks
+
+
+https://www.mtgowikiprice.com/editions\
+
+
+Notice the tabs on the top - standard, modern, vintage and legacy. Those are the most popular formats. Standard is just the newest cards. Modern is all cards for the best 10 years or so, including all cards in standard. Vintage and legacy include even more cards still.
+
+So in each format, the decks are different because the cards are different. For the purposes of this site, we don't need to know exactly which cards are in which deck. You and I might both play a deck called "Deck X", where only 52 out of the 60 cards are the same. But because they are still so similar, they are still called by the same name.
+
+If I want to log my results from standard matches, I will need to log the format - standard - and the deck name, and then for each match I will log my opponent, the name of my opponent's deck (which both stay the same for the entire match), whether I play or draw in game 1, how many cards I start with in game 1, how many cards my opponent starts with in game 1, whether I win or lose game 1, and then the same columns for games 2 and 3, and finally match result. Then, the match result will automatically calculate into the league record column. As well, there should be 3 additional text columns - key cards, duds, and notes - where the user can leave text notes. One view will be just a list of all previous matches, where users can view their notes from previous matches.
+
+As for blank and non-blank cells: Each match is best of 3 games. If I win the first and you win the second, then we have to play a third. But if I win both the first and the second, we skip the third, since I have already won the match. As a result, sometimes the game 3 columns will all be blank (null, empty). Thus, if the calculation counts all rows with a "Win" game 3 and divides by the total number of game 3s, the calculation needs to skip the null entries.
+Users don't add individual cards, just decks (collections of cards). When they add a deck, I think the only required fields will be deck name and format. There can be optional fields for Style and Archetype and then a field for "Deck Description and Key Cards".
+
+
+//Fixes
+fixed*Put active and in active in deck table
+fixed Can slider text include HTML? For instance, if I want the bottom text (misspelled on the manage sliders page) to be a link to login.
+//fixed* How can I edit existing sliders?
+fixed* Are there limitations to the size of the slider image? I see the suggestions for 622x671, but if I use a different size, will it resize? Shrink a larger image? Or just center a smaller image?
+fixed*Similar, what file types can I use?
+fixed* Also, there typos on the "Add a Slider" popup. These are the sorts of things I'd be happy to fix. "Top Text" says "The top field is required." below it, but then the bottom (misspelled) text just has an asterisk without saying required. In general, I would expect to see an asterisk next to each required field, with a single note at the bottom saying "* Required", and then if a required field is not completed when the finish button is pressed, text should be appear by each missing required field.
+fixed* I see that messages appear in the "messages" page. Will I also receive an email?
+fixed* In "Edit Format", the "Game" dropdown has Magic twice.
+fixed* On the format list, the "#" field has "#" for each entry.
+* The top of the format page says "All Games Format". If there is more than 1 game, will that change to a drop down where I select the game?
+fixed* Can the format table include a button for "manage decks" for each format, that takes me directly to a list of decks for that format?
+xa  * The decks page similar says "All decks" at the top. Can that be 2 drop downs - one for game and one for format, to help filter the list?
+fixed* On each deck description, there are 17 blank spaces that I didn't enter.
+fixed* If there are a lot of decks, will they all appear on that page? At some point, will there be a button to go to the next page? I think limiting each page to 50 decks makes sense.
+fixed* In the past I think I mentioned something like an "Archive Deck" button. Can we add that? I will explain why when I look at the user side.
+* Is there a way for the admin to see all users entries? My concern is that some users might put in bad data. Would I just have to query the data from the table through the VPS?
+fixed* On the manage user page, the "Magic Username" is empty even though I entered it for that user. Also, that field should just be "Magic Username", not "Magic Game Username".
+fixed* "Created" has a typo on the line below that.
+fixed* Please change "Lazy Fox" at the top to "Matchup Guru". Or is that part of an image with the logo?
+fixed* Remove the "Home" button once that is done, since clicking Lazy Fox already goes to the home page.
+fixed* When not logged in, the Gwent, Hearthstone, and Magic buttons leave the site. I made a "More Games" article. Please link Hearthstone and Gwent to that for now. I have to think about what the not logged in landing page should be for Magic. Probably a sample chart. Also, once signed in, I like how it asks for the user name and then goes to the "stay tuned" page. Please have it ask for the user name and then go to the article.
+fixed* When I tried to add that post, I got the message "The slug may only contain letters, numbers, and dashes." I'm not sure why. This is the slug, "Hearthstone and Gwent are Coming Soon". When I changed it to just "123", it worked.
+fixed* Different image sizes make different sized article boxes. Right now, the 3 articles each have an image of a different size, so the box containing each is a different height. Please make them all the same height. I think if the image is too small, there can be white space on the side.
+fixed* The Register page has ' ' under the Gwent field.
+fixed* The password reset email goes out much more slowly than the verification email. It took 5 minutes, where the verification email is near instant.
+fixed* When on the password reset page, the login and signup buttons don't work.
+fixed* When trying to sign in, before verifying my email, it tells me that "Username/Password doesn't match", even though they do. The problem is that I'm not verified.
+fixed* Also, the Remember Me button is on the same line as "Username/Password doesn't match", making it harder to see. Can you make that a separate line?
+fixed* And "doesn't" should be "doesn't"
+fixed* Once logged in, can the log out button be in the drop down with the user's name? Can there also be a button like "User Info", where the Usernames and password can be changed?
+fixed* When logged in vs not logged in, Hearthstone and Gwent change places. Can you make them be the same in both situations?
+fixed* On the Magic page, can the "View" field be moved to the far left of the same row as Format and Deck? (As pictured, attached)
+fixed* Can the default view be "Current Leagues" with the data you are showing now, but just active (incomplete) leagues?
+
+/fixed* Then, can there be a view for "League History" that shows all league?
+fixed* When the drop down menus on those pages are not used, all leagues should be shown. Right now, if I select Pauper, I need to select a deck before any Pauper leagues are shown. Then, once I select a deck and see my league, if I change the format to Modern, the Pauper league still appears.
+* There should be an option at the bottom of the format list for <All> to see all formats once again.
+fixed* Please change the "Complete League" button to "Log a League Match" and "Reset League" to "Drop from League". Then also change the pop up box to say "Drop From League" instead of reset.
+fixed* Please change "Match Result" to "Record" and "League Result" to "League Record"
+
+
+
+//fixed When in mobile mode, the text for the user drop down menu is difficult to read, since it is gray (see attached)
+//fixed * The drop down boxes are all missing the line at the bottom of the box (see attached)
+//fixed * When changing decks in the Match Status (should be "Matchup Stats"), the view always changes back to "Only me". Can it stay on whatever is already selected? If I view all players, and then change decks, I want to still view all players.
+//fixed * Can we make it so that "all players" matchup stats are visible without logging in?
+//fixed * Right now, I can only see all players stats if I have stats with the same deck. Can we make it so players can see all players stats even if they have never used that deck?
+//fixed * Can the admin be able to make other users admins? Perhaps a checkbox on the manage user page?
+//fixed * Is it possible to change the slider text based on whether the user is logged in? Right now, it says "Log in or sign up", but I would like that to change if the user is already logged in.
+//fixed * Was the favicon updated? I sent a revised version last week that I thought would appear bigger.
+* I don't see why I can change the publish date on articles now.
+* I'd like to be able to publish changes myself, so that I can fix little typos
+* Similarly, how do I add pages for things like the FAQ and privacy policy? I think I can just add new HTML on BitBucket and then change the footer so the links are the names of those file
+
+
+
+When selecting "All Leagues", can it show all leagues before selecting a format? And then all leagues from all decks of that format before selecting a deck?
+//When I am on "All Leagues" and click "Log a match" and then select a format where I already have an active league, it tells me there is already an active league. Instead, can it have me confirm that I want to log that match in the active league?
+//Once somebody has clicked submit, is it possible, if there was a mistake, to edit a previous match?
+//fixed Similar to the question about seeing all leagues without selecting a format, when looking at matchup stats, is it possible to see all stats after selecting a format, but before selecting a deck? Like selecting "All Decks". And if so, can "All Decks" be an option?
+When a user adds a deck from the "log a match" page, if they have already entered the opponent name or any other data, that data is erased when they add the new deck. Is it possible to save the data that was entered while adding the new deck?
+How easy would it be to make the data bi-directional? That is, right now if there is no data in the website, and I create Deck A and play Deck B and win, then Deck A will show as 1-0 against Deck B, but Deck B will not show any data. Instead, I would like each match to show in both places.
+
+There are two complications:
+* When Deck A plays against Deck A, it would need to only count as 1 match instead of 2
+* Because users are entering opponent's name, if a new user signs up, they can inherit all the matches against them. This might be totally unnecessary and difficult, though.
+If it's fairly easy, I would like to do it now. I think showing more results for more decks will get more people to use the site. But if it is difficult, it can wait until another time.
